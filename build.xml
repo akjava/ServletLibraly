@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ====================================================================== 
+     2013/06/09 18:26:16                                                        
+
+     project    
+     description
+                   
+     aki                                                                
+     ====================================================================== -->
+<project name="project" default="default">
+    <description>
+            description
+    </description>
+
+    <!-- ================================= 
+          target: default              
+         ================================= -->
+    <target name="default" depends="depends" description="description">
+    	 <path id="servletlibs">
+    	    <fileset dir="war/WEB-INF/lib">
+    	      <include name="**/*.jar" />
+    	    </fileset>
+    	  </path>
+    	
+    	<javac destdir="tmp" srcdir="src">
+        	
+        	
+        	<classpath>
+        		<path path="C:\eclipse\plugins\com.google.appengine.eclipse.sdkbundle_1.8.0\appengine-java-sdk-1.8.0\lib\shared\servlet-api.jar"/>
+        		<path refid="servletlibs"/>
+        	</classpath>
+        </javac>
+    	<copydir dest="tmp" src="src"></copydir>
+    	<jar destfile="built/akjava_servlet.jar" basedir="tmp"/>
+    	<delete dir="tmp"></delete>
+    </target>
+
+    <!-- - - - - - - - - - - - - - - - - - 
+          target: depends                      
+         - - - - - - - - - - - - - - - - - -->
+    <target name="depends">
+    	<delete dir="tmp"></delete>
+    	<mkdir dir="tmp"/>
+    	<mkdir dir="built"/>
+    </target>
+
+</project>
