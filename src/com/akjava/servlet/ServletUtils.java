@@ -11,6 +11,12 @@ import javax.servlet.http.HttpServletRequest;
 import com.google.common.base.Joiner;
 
 public class ServletUtils {
+	/**
+	 * when this method need?just call request.getQueryString()?
+	 * @param request
+	 * @param encode
+	 * @return
+	 */
 	public static String requestToQuery(HttpServletRequest request,String encode){
 		List<String> kv=new ArrayList<String>();
 		
