@@ -14,6 +14,7 @@ public class ServletUtils {
 	public static String requestToQuery(HttpServletRequest request,String encode){
 		List<String> kv=new ArrayList<String>();
 		
+		@SuppressWarnings("rawtypes")
 		Enumeration en=request.getParameterNames();
 		while(en.hasMoreElements()){
 			String key=(String) en.nextElement();
@@ -37,6 +38,19 @@ public class ServletUtils {
 		
 		
 		return Joiner.on('&').join(kv);
+	}
+	
+	public static String parsePath(HttpServletRequest request,String welcomeName){
+		String path=request.getRequestURI();
+		if(welcomeName!=null){
+			if(path.endsWith(welcomeName)){
+				path=path.substring(0,path.length()-welcomeName.length());
+			}
+		}
+		if(request.getQueryString()!=null){
+			path+="?"+request.getQueryString();
+		}
+		return path;
 	}
 	
 	public static int parsePageNumber(HttpServletRequest request,String pageName){

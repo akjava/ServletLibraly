@@ -30,7 +30,9 @@
         		<path refid="servletlibs"/>
         	</classpath>
         </javac>
-    	<copydir dest="tmp" src="src"></copydir>
+    	<copydir dest="tmp" src="src">
+    		<exclude name="META-INF/*.xml"/>
+    	</copydir>
     	<jar destfile="built/akjava_servlet.jar" basedir="tmp"/>
     	<delete dir="tmp"></delete>
     </target>

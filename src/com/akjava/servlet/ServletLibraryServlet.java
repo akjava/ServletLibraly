@@ -28,13 +28,18 @@ public class ServletLibraryServlet extends AbstractSimpleTemplateServlet {
 	@Override
 	protected String initializeBaseTemplateHtmlName() {
 		// TODO Auto-generated method stub
-		return "test";
+		return "test1.txt";
 	}
 
 	@Override
 	protected String initializeMainTemplateHtmlName() {
 		// TODO Auto-generated method stub
-		return "test";
+		return "test2.txt";
+	}
+
+	@Override
+	protected boolean initializeUseCache() {
+		return true;
 	}
 
 
