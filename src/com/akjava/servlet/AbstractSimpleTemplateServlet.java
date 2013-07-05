@@ -26,6 +26,7 @@ public abstract class AbstractSimpleTemplateServlet extends HttpServlet{
 	
 	public static volatile Cache cache;
 	public static int DEFAULT_CACHE_AGE=60*3;
+	protected int cache_age=DEFAULT_CACHE_AGE;
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
@@ -42,7 +43,7 @@ public abstract class AbstractSimpleTemplateServlet extends HttpServlet{
 		if(useCache){
 			initCache();
 			path=ServletUtils.parsePath(request, "index.html");
-			System.out.println(path);
+			
 			outputText=(String) cache.get(path);
 		}
 		
@@ -73,7 +74,7 @@ public abstract class AbstractSimpleTemplateServlet extends HttpServlet{
 		}
 		
 		
-		response.setHeader("Cache-Control", "public, max-age="+DEFAULT_CACHE_AGE);
+		response.setHeader("Cache-Control", "public, max-age="+cache_age);
 		response.setContentType(MediaType.HTML_UTF_8.toString());
 		response.getWriter().write(outputText);
 	}

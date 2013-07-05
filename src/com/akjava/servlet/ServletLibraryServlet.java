@@ -39,6 +39,7 @@ public class ServletLibraryServlet extends AbstractSimpleTemplateServlet {
 
 	@Override
 	protected boolean initializeUseCache() {
+		cache_age=60;//you can custome cache age here
 		return true;
 	}
 
