@@ -20,6 +20,9 @@ public class SimpleTemplateUtils {
 	public static String createTextFromFile(ServletContext context,String filePath,Map<String,String> mapData){
 		
 			String template=loadTextFromFile(context, filePath);
+			if(template==null){
+				return "Template file not found:"+filePath;
+			}
 			return TemplateUtils.createAdvancedText(template, mapData);
 		
 	}
