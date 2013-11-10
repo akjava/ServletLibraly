@@ -4,7 +4,9 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Enumeration;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -44,6 +46,27 @@ public class ServletUtils {
 		
 		
 		return Joiner.on('&').join(kv);
+	}
+	
+	public static Map<String,String> requestToMap(HttpServletRequest request,String joint){
+		Map<String,String> result=new HashMap<String, String>();
+		Joiner joiner=Joiner.on(joint);
+		@SuppressWarnings("rawtypes")
+		Enumeration en=request.getParameterNames();
+		
+		while(en.hasMoreElements()){
+			String key=(String) en.nextElement();
+			
+			String[] vs=request.getParameterValues(key);
+			if(vs!=null){
+				result.put(key,joiner.join(vs));
+			}else{
+				result.put(key, "");
+			}
+		}
+		
+		
+		return result;
 	}
 	
 	public static String parsePath(HttpServletRequest request,String welcomeName){
