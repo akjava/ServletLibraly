@@ -73,8 +73,15 @@ public abstract class AbstractSimpleTemplateServlet extends HttpServlet{
 		
 		}
 		
-		
-		response.setHeader("Cache-Control", "public, max-age="+cache_age);
+		if(useCache){
+			
+			response.setHeader("Cache-Control", "public, max-age="+cache_age);
+		}else{
+			
+			response.setHeader("Pragma", "no-cache");
+			response.setHeader("Cache-Control", "no-cache");	
+			response.setHeader("Expires", "Thu, 01 Dec 1994 16:00:00 GMT");		
+		}
 		response.setContentType(MediaType.HTML_UTF_8.toString());
 		response.getWriter().write(outputText);
 	}
