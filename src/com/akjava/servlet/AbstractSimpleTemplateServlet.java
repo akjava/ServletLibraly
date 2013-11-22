@@ -36,7 +36,6 @@ public abstract class AbstractSimpleTemplateServlet extends HttpServlet{
 	 */
 	@SuppressWarnings("unchecked")
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		String path=null;
 		initializeTemplate();
 		String outputText=null;
