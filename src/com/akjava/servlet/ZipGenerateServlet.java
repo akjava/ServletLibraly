@@ -41,7 +41,7 @@ protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 	}catch (Exception e) {
 	}
 	if(fileNumber==0){
-		resp.sendError(500, "invalid filenumber value");
+		resp.sendError(500, "invalid filenumber value:"+fileNumber);
 		return;
 	}
 	
@@ -63,6 +63,11 @@ protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 	ZipOutputStream zipOut=new ZipOutputStream(bout);
 	for(int i=1;i<=fileNumber;i++){
 		String path=req.getParameter(filePathBase+i);
+		if(path.startsWith("/")){
+			String np=path.substring(1);
+			System.out.println("invalid path:"+path+" converted to "+np);
+			path=path.substring(1);
+		}
 		if(path==null){
 			resp.sendError(500, "not found path:"+(filePathBase+i));
 			return;
