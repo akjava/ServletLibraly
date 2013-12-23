@@ -1,13 +1,15 @@
 package com.akjava.servlet;
 
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Map;
 
 import javax.servlet.ServletContext;
 
 import com.akjava.lib.common.utils.TemplateUtils;
+import com.google.common.base.Charsets;
 import com.google.common.io.CharStreams;
 
 public class SimpleTemplateUtils {
@@ -28,7 +30,8 @@ public class SimpleTemplateUtils {
 	}
 	public static String loadTextFromFile(ServletContext context,String filePath){
 		try {
-			return CharStreams.toString(new FileReader(context.getRealPath("WEB-INF/template/"+filePath)));
+			InputStreamReader input=new InputStreamReader(new FileInputStream(context.getRealPath("WEB-INF/template/"+filePath)), Charsets.UTF_8);
+			return CharStreams.toString(input);
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
