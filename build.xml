@@ -26,7 +26,7 @@
         	
         	
         	<classpath>
-        		<path path="lib/akjavalibgwt-dep_131220.jar;C:\eclipse\plugins\com.google.appengine.eclipse.sdkbundle_1.8.8\appengine-java-sdk-1.8.8\lib\shared\servlet-api.jar"/>
+        		<path path="war/WEB-INF/lib/guava-15.0.jar;war/WEB-INF/lib/akjavalibgwt_131220.jar;lib/akjavalibgwt-dep_131220.jar;C:\eclipse\plugins\com.google.appengine.eclipse.sdkbundle_1.8.8\appengine-java-sdk-1.8.8\lib\shared\servlet-api.jar"/>
         		<path refid="servletlibs"/>
         	</classpath>
         </javac>

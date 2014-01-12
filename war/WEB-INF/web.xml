@@ -43,6 +43,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
    		 <param-value>http://localhost</param-value>
   		</init-param>
 	</servlet>
+	
 	<servlet-mapping>
 		<servlet-name>SampleRssServlet</servlet-name>
 		<url-pattern>/rss.xml</url-pattern>

@@ -25,7 +25,7 @@ import com.google.common.collect.Lists;
 import com.google.common.net.MediaType;
 import com.google.common.xml.XmlEscapers;
 
-public abstract class TextSitemapServlet extends HttpServlet{
+public abstract class TextSitemapsServlet extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	
 	

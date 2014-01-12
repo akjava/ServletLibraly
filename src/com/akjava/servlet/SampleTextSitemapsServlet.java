@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.google.common.collect.Lists;
 
-public class SampleTextSitemapsServlet extends TextSitemapServlet {
+public class SampleTextSitemapsServlet extends TextSitemapsServlet {
 
 	/**
 	 * 
