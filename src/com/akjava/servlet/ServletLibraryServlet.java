@@ -9,6 +9,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.common.collect.Maps;
 
+/**
+ * just for test
+ * @author aki
+ *
+ */
 @SuppressWarnings("serial")
 public class ServletLibraryServlet extends AbstractSimpleTemplateServlet {
 	@Override

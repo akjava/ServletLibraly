@@ -81,9 +81,14 @@ public abstract class AbstractSimpleTemplateServlet extends HttpServlet{
 			response.setHeader("Cache-Control", "no-cache");	
 			response.setHeader("Expires", "Thu, 01 Dec 1994 16:00:00 GMT");		
 		}
-		response.setContentType(MediaType.HTML_UTF_8.toString());
+		response.setContentType(getMediaType());
 		response.getWriter().write(outputText);
 	}
+	
+	protected String getMediaType(){
+		return MediaType.HTML_UTF_8.toString();
+	}
+	
 	@SuppressWarnings("unchecked")
 	private void initCache() {
 		CacheFactory cacheFactory;

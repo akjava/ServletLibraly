@@ -4,6 +4,8 @@ xmlns="http://java.sun.com/xml/ns/javaee"
 xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
 http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+
+
 	<servlet>
 		<servlet-name>ServletLibrary</servlet-name>
 		<servlet-class>com.akjava.servlet.ServletLibraryServlet</servlet-class>
@@ -12,6 +14,28 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>ServletLibrary</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>SampleRssServlet</servlet-name>
+		<servlet-class>com.akjava.servlet.SampleRssServlet</servlet-class>
+		<init-param>
+    	<param-name>title</param-name>
+   		 <param-value>sample-rss</param-value>
+  		</init-param>
+  		<init-param>
+    	<param-name>description</param-name>
+   		 <param-value>simple rss servlet</param-value>
+  		</init-param>
+  		<init-param>
+    	<param-name>link</param-name>
+   		 <param-value>http://localhost</param-value>
+  		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SampleRssServlet</servlet-name>
+		<url-pattern>/rss.xml</url-pattern>
+	</servlet-mapping>
+	
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
 	</welcome-file-list>

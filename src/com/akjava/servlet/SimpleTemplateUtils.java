@@ -23,7 +23,7 @@ public class SimpleTemplateUtils {
 		
 			String template=loadTextFromFile(context, filePath);
 			if(template==null){
-				return "Template file not found:"+filePath;
+				return "Template file not found:"+filePath+".sadly this page is cached try later";
 			}
 			return TemplateUtils.createAdvancedText(template, mapData);
 		
