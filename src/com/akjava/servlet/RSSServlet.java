@@ -29,12 +29,12 @@ public abstract class RSSServlet extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	
 	
-	protected boolean useCache;
+	
 	protected Map<String,String> dataMap = new HashMap<String, String>();;
 	
 	public static volatile Cache cache;
-	public static int DEFAULT_CACHE_AGE=60*60;
-	protected int cache_age=DEFAULT_CACHE_AGE;
+	public static int DEFAULT_CACHE_AGE=60*60;//1 hour
+	//protected int cache_age=DEFAULT_CACHE_AGE;
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
@@ -58,6 +58,8 @@ public abstract class RSSServlet extends HttpServlet{
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String path=null;
 		
+		boolean useCache=isCacheContent();
+		
 		String outputText=null;
 		if(useCache){
 			initCache();
@@ -65,9 +67,9 @@ public abstract class RSSServlet extends HttpServlet{
 			outputText=(String) cache.get(path);
 		}
 		
+		int cache_age=getCacheSecondTimeAge();
 		
-		
-		if(outputText==null){
+		if(outputText==null){//some case cache faild
 		StringBuffer output=new StringBuffer();
 		
 		Map<String,String> hashMap=new HashMap<String, String>();
@@ -124,6 +126,8 @@ public abstract class RSSServlet extends HttpServlet{
 	}
 	
 	public abstract List<RSSItem> getRSSItems();
+	public abstract boolean isCacheContent();
+	public abstract int getCacheSecondTimeAge();
 	
 	public static class RSSItem{
 		private String title;

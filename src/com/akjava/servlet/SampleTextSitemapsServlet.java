@@ -19,4 +19,14 @@ public class SampleTextSitemapsServlet extends TextSitemapServlet {
 		return Lists.newArrayList("/","/test.html");
 	}
 
+	@Override
+	public boolean isCacheContent() {
+		return true;
+	}
+
+	@Override
+	public int getCacheSecondTimeAge() {
+		return 60*60*8;//each 8 hour
+	}
+
 }
