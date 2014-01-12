@@ -5,11 +5,23 @@ xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
 http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 
-
 	<servlet>
+		<servlet-name>SampleTextSitemapsServlet</servlet-name>
+		<servlet-class>com.akjava.servlet.SampleTextSitemapsServlet</servlet-class>
+		<init-param>
+    	<param-name>domain</param-name>
+   		 <param-value>http://localhost</param-value>
+  		</init-param>
+  	</servlet>
+  		<servlet-mapping>
+		<servlet-name>SampleTextSitemapsServlet</servlet-name>
+		<url-pattern>/sitemaps.txt</url-pattern>
+	</servlet-mapping>
+  		
+  	<servlet>
 		<servlet-name>ServletLibrary</servlet-name>
 		<servlet-class>com.akjava.servlet.ServletLibraryServlet</servlet-class>
-	</servlet>
+	</servlet>	
 	<servlet-mapping>
 		<servlet-name>ServletLibrary</servlet-name>
 		<url-pattern>/</url-pattern>
