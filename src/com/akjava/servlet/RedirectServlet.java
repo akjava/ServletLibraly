@@ -20,7 +20,8 @@ public class RedirectServlet extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		 ServletConfig config = getServletConfig();
-		 Enumeration<String> en=config.getInitParameterNames();
+		 @SuppressWarnings("unchecked")
+		Enumeration<String> en=config.getInitParameterNames();
 		 String mode=req.getParameter("mode");
 		 if(mode!=null && "list".equals(mode)){
 			

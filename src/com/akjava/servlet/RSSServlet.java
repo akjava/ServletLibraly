@@ -59,7 +59,7 @@ public abstract class RSSServlet extends HttpServlet{
 		String path=null;
 		
 		boolean useCache=isCacheContent();
-		
+		//System.out.println("useCache:"+useCache);
 		String outputText=null;
 		if(useCache){
 			initCache();
@@ -70,6 +70,7 @@ public abstract class RSSServlet extends HttpServlet{
 		int cache_age=getCacheSecondTimeAge();
 		
 		if(outputText==null){//some case cache faild
+		//	System.out.println("null output:"+path);
 		StringBuffer output=new StringBuffer();
 		
 		Map<String,String> hashMap=new HashMap<String, String>();
@@ -107,13 +108,18 @@ public abstract class RSSServlet extends HttpServlet{
 		
 		outputText=output.toString();
 		if(useCache && cache!=null){
+			//System.out.println("put cache:"+path);
 			cache.put(path,outputText);
+		}else{
+			//System.out.println("useCache:"+useCache+",null="+(cache==null));
 		}
 		
+		}else{
+			//System.out.println("load from cache");
 		}
 		
 		if(useCache){
-			
+			//System.out.println("use cache:"+cache_age);
 			response.setHeader("Cache-Control", "public, max-age="+cache_age);
 		}else{
 			
@@ -171,6 +177,7 @@ public abstract class RSSServlet extends HttpServlet{
 		CacheFactory cacheFactory;
 		if(cache==null){//re create cache
 		try {
+			//System.out.println("null cache initialized");
 			@SuppressWarnings("rawtypes")
 			Map props = new HashMap();
 			props.put(GCacheFactory.EXPIRATION_DELTA, DEFAULT_CACHE_AGE);// 3minute
