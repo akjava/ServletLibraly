@@ -12,7 +12,7 @@ public class SampleRssServlet extends RSSServlet{
 	private static final long serialVersionUID = 1L;
 
 	@Override
-	public List<RSSItem> getRSSItems() {
+	public List<RSSItem> getRSSItems(String pathInfo) {
 		List<RSSItem> items=Lists.newArrayList();
 		items.add(new RSSItem("google","http://www.google.com",System.currentTimeMillis()));
 		items.add(new RSSItem("Yahoo","http://www.yahoo.co.jp",System.currentTimeMillis()-1000));

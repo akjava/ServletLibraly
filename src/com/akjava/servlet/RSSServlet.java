@@ -75,8 +75,9 @@ public abstract class RSSServlet extends HttpServlet{
 		
 		Map<String,String> hashMap=new HashMap<String, String>();
 		
+		String requestPath=request.getPathInfo();
 		
-		String data=crateRSSItemArea();
+		String data=crateRSSItemArea(requestPath);
 		if(data==null){//it must be called error ignore it
 			return;
 		}
@@ -131,7 +132,7 @@ public abstract class RSSServlet extends HttpServlet{
 		response.getWriter().write(outputText);
 	}
 	
-	public abstract List<RSSItem> getRSSItems();
+	public abstract List<RSSItem> getRSSItems(String pathInfo);
 	public abstract boolean isCacheContent();
 	public abstract int getCacheSecondTimeAge();
 	
@@ -190,8 +191,8 @@ public abstract class RSSServlet extends HttpServlet{
 	}
 	
 	
-	public String crateRSSItemArea(){
-		List<RSSItem> items=getRSSItems();
+	public String crateRSSItemArea(String pathInfo){
+		List<RSSItem> items=getRSSItems(pathInfo);
 		return Joiner.on("\n").join(Lists.transform(items, new RSSItemToText()));
 	}
 
