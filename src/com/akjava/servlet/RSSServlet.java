@@ -196,6 +196,7 @@ public abstract class RSSServlet extends HttpServlet{
 
 	public static SimpleDateFormat sdf = new SimpleDateFormat("EEE, dd MMM YYYY HH:mm:ss Z",Locale.US);
 	public static class RSSItemToText implements Function<RSSItem,String>{
+		
 		String template="<item>"+
 "<title>${title}</title>\n"+
 "<link>${link}</link>\n"+
@@ -205,6 +206,7 @@ public abstract class RSSServlet extends HttpServlet{
 		
 		@Override
 		public String apply(RSSItem input) {
+			
 			Map<String,String> map=new HashMap<String, String>();
 			map.put("pubDate", sdf.format(new Date(input.getPubDate())));
 			map.put("title", XmlEscapers.xmlContentEscaper().escape(input.getTitle()!=null?input.getTitle():""));
